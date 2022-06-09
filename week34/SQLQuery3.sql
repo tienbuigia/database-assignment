@@ -124,3 +124,21 @@ WITH SOTRAN AS (
 
 /*** BAI TAP VE RULE ***/
 -- #1:
+ALTER TABLE CAUTHU
+ADD CHECK (VITRI IN (N'Thủ môn', N'Tiền đạo', N'Tiền vệ', N'Trung vệ', N'Hậu vệ'));
+
+-- #2:
+ALTER TABLE HLV_CLB
+ADD CHECK (VAITRO IN (N'HLV Chính', N'HLV Phụ', N'HLV Thể lực', N'HLV Thủ môn'));
+
+-- #3:
+ALTER TABLE CAUTHU
+ADD CHECK (YEAR(GETDATE()) - YEAR(NGAYSINH) >= 18);
+
+-- #4:
+ALTER TABLE TRANDAU
+ADD CONSTRAINT CK_TRANDAU_KETQUA_THANG_THUA 
+	CHECK (KETQUA LIKE "[0-9]-[0-9]"	--> DẠNG SỐ TRỪ SỐ
+	AND CAST(LEFT(KETQUA,1) AS smallint) - CAST(RIGHT(KETQUA,1) AS smallint) > 0); --> CHỈ SỐ THẰNG - THUA > 0
+
+/*** BÀI TẬP VỀ VIEW ***/
