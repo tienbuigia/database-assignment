@@ -12,7 +12,7 @@ DECLARE @s1 int = 520,
 		@s2 int = 250,
 		@tg int;
 SET @tg = @s1 + @s2;
-PRINT N'tổng là: ' + CAST(@tg AS NVARCHAR(20));
+PRINT N'tổng là: ' + CAST(@tg AS VARCHAR);
 GO
 -- #4:
 CREATE OR ALTER PROC tinh_tong_printMax
@@ -21,12 +21,12 @@ CREATE OR ALTER PROC tinh_tong_printMax
 AS BEGIN
 DECLARE @max INT
 SET @tong = @s1 + @s2;
--- PRINT N'tong la: ' + CAST(@tong AS NVARCHAR(20));
+-- PRINT N'tong la: ' + CAST(@tong AS VARCHAR);
 IF (@s1 > @s2)
 	SET @max = @s1;
 ELSE
 	SET @max = @s2;
-PRINT N'Số lớn nhất của ' + CAST(@s1 AS VARCHAR) + ' và ' + CAST(@s2 AS VARCHAR) + ' là ' + CAST(@tong as nvarchar(20)); 
+PRINT N'Số lớn nhất của ' + CAST(@s1 AS VARCHAR) + ' và ' + CAST(@s2 AS VARCHAR) + ' là ' + CAST(@tong as varchar); 
 END
 GO
 /* kiem tra */
@@ -113,3 +113,6 @@ EXEC tinhTong_countSoChan 25;
 GO
 
 -- #9:
+CREATE OR ALTER PROCEDURE cauthu_brazil
+AS
+SELECT * FROM 
