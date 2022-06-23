@@ -1,4 +1,5 @@
-﻿-- #1:
+﻿/****STORED PROCEDURE****/
+-- #1:
 PRINT N'Xin chào';
 GO
 -- #2:
@@ -87,3 +88,28 @@ GO
 /* kiem tra */
 EXEC tinh_tong_chan 8;
 GO
+
+-- #8:
+CREATE OR ALTER PROCEDURE tinhTong_countSoChan @n INT
+AS BEGIN
+	DECLARE @tong INT = 0,
+		@count_sochan INT = 0,
+		@i INT = 0;
+	WHILE (@i < @n)
+	BEGIN
+			SET @i = @i + 1;
+			IF (@i % 2 = 0)
+			BEGIN
+				SET @count_sochan = @count_sochan + 1;
+				SET @tong = @tong + @i;
+			END
+	END
+	PRINT N'Tong cac so chan: ' + CAST(@tong AS VARCHAR);
+	PRINT N'So luong so chan: ' + CAST(@count_sochan AS VARCHAR);
+END
+GO
+/* kiem tra */
+EXEC tinhTong_countSoChan 25;
+GO
+
+-- #9:
