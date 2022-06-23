@@ -30,7 +30,7 @@ END
 GO
 /* kiem tra */
 DECLARE @tong INT;
-EXEC tinh_tong 100, 200, @tong OUT
+EXEC tinh_tong_printMax 100, 200, @tong OUT
 GO
 
 -- #5:
