@@ -10,10 +10,15 @@ explain plan:
 3: ?
 2: quet b tree index clustered bang header
 1: inner join 2 bang detail va header.
+
+explain query:
+tìm top 5 CustomerID có tổng giá trị hóa đơn cao nhất qua các năm.
+
+kết quả lược đồ:
+CustomerID, SalesOrderID, ModifiedDate, GiaTriHoaDon (SUM(LineTotal))
 */
 
-select *
-from (
+select * from (
 	select 
 		DENSE_RANK() over (partition by Nam order by TongGiaTriHoaDon desc) as rank_Number,
 		CustomerID, Nam, TongGiaTriHoaDon
@@ -37,8 +42,7 @@ from (
 where rank_Number < 6;
 
 -- #test 1
-SELECT *
-FROM (
+SELECT * FROM (
 	SELECT
 		DENSE_RANK () OVER (
 			PARTITION BY Nam
