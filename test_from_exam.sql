@@ -7,7 +7,7 @@ explain plan:
 6: quet clustered index ca bang
 5: tinh LineTotal
 4: tinh xem LineTotal co NULL hay ko, co thi gan gia tri 0.0
-3: ?
+3: sum
 2: quet b tree index clustered bang header
 1: inner join 2 bang detail va header.
 
@@ -17,6 +17,8 @@ tìm top 5 CustomerID có tổng giá trị hóa đơn cao nhất qua các năm.
 kết quả lược đồ:
 CustomerID, SalesOrderID, ModifiedDate, GiaTriHoaDon (SUM(LineTotal))
 */
+USE AdventureWorks;
+go
 
 select * from (
 	select 
