@@ -21,7 +21,7 @@ INSERT Test.TestTable (Col1, Col2) VALUES (6,60);
 -- step 6
 SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
 BEGIN TRAN;
-	SELECT * FROM Test.TestTable
+	SELECT * FROM Test.TestTable -- step 10: the first statement in step 6 maybe the dirty read.
 	WHERE Col1 = 1;
 --> we are reading the value that are committed, and not be blocked because READ_COMMITTED_SNAPSHOT is on.
 
