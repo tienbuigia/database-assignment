@@ -18,10 +18,12 @@ INSERT Test.TestTable (Col1, Col2) VALUES (4,40);
 INSERT Test.TestTable (Col1, Col2) VALUES (5,50);
 INSERT Test.TestTable (Col1, Col2) VALUES (6,60);
 
--- Connection 1
+-- step 6
 SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
 BEGIN TRAN;
 	SELECT * FROM Test.TestTable
 	WHERE Col1 = 1;
+--> we are reading the value that are committed, and not be blocked because READ_COMMITTED_SNAPSHOT is on.
+
 -- Connection 1
 COMMIT TRAN;
