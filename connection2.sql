@@ -1,4 +1,2 @@
--- Connection 2 - Session ID: 
-select @@SPID;
-GO
+-- Connection 2 
 USE TestDB;
