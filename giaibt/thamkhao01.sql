@@ -39,7 +39,8 @@ group by maCB;
 -- clustering index -> maKH & maCB 
 -- non-clustering index B+ tree -> ngay_di <- vi tim kiem trong 1 khoang 2011 - 2014
 -- d)
--- clustering B+ tree -> maCB
+-- clustering index -> maCB
 
-cau 3:
-
+-- cau 3:
+-- 1. su dung clustering index tren tat ca primary keys cua cac bang.
+-- 2. bang Chuyen_bay: hash tren ngay_di, ngay_den, SB_di, SB_den.
