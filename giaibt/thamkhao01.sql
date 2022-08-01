@@ -49,6 +49,6 @@ cau 4:
 --1b:
 SELECT * FROM San_bay
   join Chuyen_bay on SB_di = maSB
-  join Chuyen_bay on SB_den = maSB
+  or SB_den = maSB
 WHERE ngay_di <> '2014-12-6'
   and ngay_den <> '2014-12-6';
