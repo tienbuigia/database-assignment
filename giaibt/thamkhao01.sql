@@ -45,10 +45,16 @@ group by maCB;
 -- 1. su dung clustering index tren tat ca primary keys cua cac bang.
 -- 2. bang Chuyen_bay: hash tren ngay_di, ngay_den, SB_di, SB_den.
 
-cau 4:
---1b:
-SELECT * FROM San_bay
-  join Chuyen_bay on SB_di = maSB
-  or SB_den = maSB
-WHERE ngay_di <> '2014-12-6'
-  and ngay_den <> '2014-12-6';
+-- cau 4:
+-- --1b:
+-- SELECT distinct maSB, ten, thanh_pho, quoc_gia FROM San_bay
+--   join Chuyen_bay on SB_di = maSB
+--   or SB_den = maSB
+-- WHERE ngay_di <> '2014-12-6'
+--   and ngay_den <> '2014-12-6';
+
+-- => giai thich plan: 
+--   1. clustered scan Chuyen_bay voi dieu kien where
+--   2. clustered scan San_bay lay thong tin san bay
+--   3. merge-join 2 buoc 1, 2 
+
