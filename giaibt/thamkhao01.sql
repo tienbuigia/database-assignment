@@ -6,7 +6,7 @@ where ngay_di = '2014-12-6';
 --1b:
 SELECT * FROM San_bay
   join Chuyen_bay on SB_di = maSB
-  join Chuyen_bay on SB_den = maSB
+  or SB_den = maSB
 WHERE ngay_di <> '2014-12-6'
   and ngay_den <> '2014-12-6';
 
@@ -44,3 +44,11 @@ group by maCB;
 -- cau 3:
 -- 1. su dung clustering index tren tat ca primary keys cua cac bang.
 -- 2. bang Chuyen_bay: hash tren ngay_di, ngay_den, SB_di, SB_den.
+
+cau 4:
+--1b:
+SELECT * FROM San_bay
+  join Chuyen_bay on SB_di = maSB
+  join Chuyen_bay on SB_den = maSB
+WHERE ngay_di <> '2014-12-6'
+  and ngay_den <> '2014-12-6';
