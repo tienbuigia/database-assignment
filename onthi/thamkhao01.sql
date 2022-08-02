@@ -1,22 +1,26 @@
 -- 1a:
 select * from [Chuyen_bay]
 join [San_bay] on maSB = SB_di
-where ngay_di = '2014-12-6';
+where ngay_di = '2014-12-6'
+    AND ten = 'noibai';
 
 --1b:
 SELECT * FROM San_bay
-  join Chuyen_bay on SB_di = maSB
-  or SB_den = maSB
+  join Chuyen_bay on Chuyen_bay.SB_di = San_bay.maSB
+  or Chuyen_bay.SB_den = San_bay.maSB
 WHERE ngay_di <> '2014-12-6'
   and ngay_den <> '2014-12-6';
 
 --1c:
-select kh.maKH, kh.ten, kh.dia_chi, kh.so_dien_thoai, count(cb.*) as so_chuyen_bay
+
+select kh.maKH, kh.ten, kh.dia_chi, kh.so_dien_thoai, count(cb.maCB) as so_chuyen_bay
 FROM Khach_hang kh 
   join Dat_cho dc on dc.maKH = kh.maKH
   join Chuyen_bay cb on cb.maCB = dc.maCB
 WHERE year(ngay_di) between 2011 and 2014
 GROUP BY kh.maKH, kh.ten, kh.dia_chi, kh.so_dien_thoai;
+
+
 
 --1d:
 select maCB, count(maKH) as so_cho_dat
